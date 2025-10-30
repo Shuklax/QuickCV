@@ -2,8 +2,6 @@
 
 Smart feedback for your dream job — QuickCV helps you track applications and get AI-powered resume feedback.
 
-![QuickCV Screenshot](/public/images/ss-01.png)
-
 ## Table of contents
 
 - [Overview](#overview)
@@ -18,6 +16,7 @@ Smart feedback for your dream job — QuickCV helps you track applications and g
 - [Folder structure](#folder-structure)
 - [Contributing](#contributing)
 - [Troubleshooting](#troubleshooting)
+
 QuickCV is a small web application built with React and TypeScript. It lets users upload and track resumes, view AI-powered feedback (score breakdowns like ATS, tone, content, structure, and skills) and manage application entries in a clean UI.
 
 The project is intended as a front-end demo / starter app and includes a simple data model, components, and styles based on Tailwind CSS.
