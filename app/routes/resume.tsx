@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const resume = () => {
+const Resume = () => {
   const { auth, isLoading, fs, kv } = usePuterStore();
   const { id } = useParams();
   const [imageUrl, setImageUrl] = useState("");
@@ -21,17 +21,20 @@ const resume = () => {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    if(!isLoading && !auth.isAuthenticated) navigate('/auth?next=/resume/${id}');
-  }, [auth.isAuthenticated])
+  useEffect(() => {
+    if (!isLoading && !auth.isAuthenticated)
+      navigate(`/auth?next=/resume/${id}`);
+  }, [auth.isAuthenticated]);
 
   useEffect(() => {
     const loadResume = async () => {
-      const resume = await kv.get("resume:${id}");
+      const resume = await kv.get(`resume:${id}`);
+      console.log(resume)
 
       if (!resume) return;
 
       const data = JSON.parse(resume);
+      console.log(data)
 
       const resumeBlob = await fs.read(data.resumePath);
       if (!resumeBlob) return;
@@ -46,6 +49,7 @@ const resume = () => {
       setImageUrl(imageUrl);
 
       setFeedback(data.feedback);
+      console.log({resumeUrl, imageUrl, feedback: data.feedback});
     };
 
     loadResume();
@@ -77,15 +81,18 @@ const resume = () => {
           )}
         </section>
         <section className="feedback-section">
-          <h2 className="text-4xl text-black font-bold">Resume Review</h2>
+          <h2 className="text-4xl text-black! font-bold">Resume Review</h2>
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
-              <Summary feedback={feedback}/>
-              <ATS scrore={feedback.padStart.score || 0} sugestion={feedback.padStart.tips || []}/>
-              <Details feedback={feedback}/>
+              <Summary feedback={feedback} />
+              <ATS
+                score={feedback.ATS.score || 0}
+                suggestions={feedback.ATS.tips || []}
+              />
+              <Details feedback={feedback} />
             </div>
           ) : (
-            <img src="/images.resume-scan-2.gif" className="w-full" />
+            <img src="/images/resume-scan-2.gif" className="w-full" />
           )}
         </section>
       </div>
@@ -93,4 +100,4 @@ const resume = () => {
   );
 };
 
-export default resume;
+export default Resume;
