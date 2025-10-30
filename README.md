@@ -2,7 +2,7 @@
 
 Smart feedback for your dream job — QuickCV helps you track applications and get AI-powered resume feedback.
 
-![QuickCV Screenshot](/public/images/resume-1.png)
+![QuickCV Screenshot](/public/images/ss-01.png)
 
 ## Table of contents
 
