@@ -116,7 +116,7 @@ const Upload = () => {
           {isProcessing ? (
             <>
               <h2>{statusText}</h2>
-              <img src="/images/resume-scan.gif" className="w-full" />
+              <img src="/images/resume-scan.gif" className="w-20" />
             </>
           ) : (
             <h2>Drop your resume for an ATS Score and improvement tips</h2>
